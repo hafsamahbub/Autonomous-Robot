@@ -21,7 +21,7 @@ BLUE = (0, 0, 255)   # Robot
 RED = (255, 0, 0)     # Goal
 GRAY = (200, 200, 200) # Obstacles
 GREEN = (0, 255, 0)   # Path
-#YELLOW = (255, 255, 0) # Checkpoints
+YELLOW = (255, 255, 0) # Checkpoints
 
 # Create a grid
 grid = [[0 for _ in range(cols)] for _ in range(rows)]
@@ -61,8 +61,8 @@ def draw_grid():
                 color = BLUE
             elif grid[row][col] == 3:  # Goal
                 color = RED
-            #elif grid[row][col] == 4:  # Checkpoint
-                #color = YELLOW
+            elif grid[row][col] == 4:  # Checkpoint
+                color = YELLOW
             pygame.draw.rect(screen, color, (col * cell_size, row * cell_size, cell_size, cell_size))
             pygame.draw.rect(screen, BLACK, (col * cell_size, row * cell_size, cell_size, cell_size), 1)
 
@@ -135,7 +135,7 @@ while running:
     draw_grid()
     
     if path:
-        #draw_path(path)  # Highlight the entire path in green
+        draw_path(path)  # Highlight the entire path in green
         
         # Move the robot along the path
         if robot_position != goal_pos and path:
